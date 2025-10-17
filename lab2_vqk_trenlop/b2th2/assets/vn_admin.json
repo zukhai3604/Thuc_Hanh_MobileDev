@@ -1,0 +1,101 @@
+
+{
+  "provinces": [
+    {
+      "code": "01",
+      "name": "Thành phố Hà Nội",
+      "districts": [
+        {
+          "code": "001",
+          "name": "Quận Ba Đình",
+          "wards": [
+            {
+              "code": "00001",
+              "name": "Phường Phúc Xá"
+            },
+            {
+              "code": "00004",
+              "name": "Phường Trúc Bạch"
+            },
+            {
+              "code": "00006",
+              "name": "Phường Vĩnh Phúc"
+            },
+            {
+              "code": "00007",
+              "name": "Phường Cống Vị"
+            },
+            {
+              "code": "00008",
+              "name": "Phường Liễu Giai"
+            }
+          ]
+        },
+        {
+          "code": "002",
+          "name": "Quận Hoàn Kiếm",
+          "wards": [
+            {
+              "code": "00034",
+              "name": "Phường Phúc Tân"
+            },
+            {
+              "code": "00037",
+              "name": "Phường Đồng Xuân"
+            },
+            {
+              "code": "00040",
+              "name": "Phường Hàng Mã"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "79",
+      "name": "Thành phố Hồ Chí Minh",
+      "districts": [
+        {
+          "code": "760",
+          "name": "Quận 1",
+          "wards": [
+            {
+              "code": "26734",
+              "name": "Phường Tân Định"
+            },
+            {
+              "code": "26737",
+              "name": "Phường Đa Kao"
+            },
+            {
+              "code": "26740",
+              "name": "Phường Bến Nghé"
+            },
+            {
+              "code": "26743",
+              "name": "Phường Bến Thành"
+            }
+          ]
+        },
+        {
+          "code": "770",
+          "name": "Quận 3",
+          "wards": [
+            {
+              "code": "27094",
+              "name": "Phường 09"
+            },
+            {
+              "code": "27097",
+              "name": "Phường 10"
+            },
+            {
+              "code": "27100",
+              "name": "Phường 11"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

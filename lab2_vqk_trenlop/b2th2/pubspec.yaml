@@ -1,0 +1,40 @@
+
+name: b2th2
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # For local storage
+  shared_preferences: ^2.2.2
+  
+  # For map functionality
+  google_maps_flutter: ^2.5.0
+  
+  # For geocoding (search on map)
+  geocoding: ^2.1.1
+
+  # For generating unique IDs
+  uuid: ^4.3.3
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
