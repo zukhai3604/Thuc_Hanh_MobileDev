@@ -1,0 +1,80 @@
+services:
+  # PHP-FPM (Laravel)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # Redis (tùy chọn – đang bật sẵn cho Bài 4)
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Nginx
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"              # http://localhost:8000
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
+    depends_on:
+      app:
+        condition: service_started
+
+  # MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: product_db        # 👈 hardcode để chắc chắn
+      MYSQL_ROOT_PASSWORD: root         # 👈 hardcode để chắc chắn
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --lower_case_table_names=1
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3307:3306"                     # MySQL local = 3307
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
